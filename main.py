@@ -1,47 +1,8 @@
-<<<<<<< HEAD
-import os
-def main():
-   
-    files = os.listdir()
-
-    while True:
-        print("\n\n 😄==== Menú ====😄")
-        for i, filename in enumerate(files, start=1):
-            #
-            print(f"{i}. Ejecutar función de {filename}")
-
-        print("q. Salir")
-        choice = input("Elige una opción: ")
-        print("\n")
-
-        if choice.isdigit() and 1 <= int(choice) <= len(files):
-            try:
-                
-                module_name = files[int(choice) - 1].rstrip(".py")
-                
-                module = __import__(module_name)
-                
-                module.sum_numbers()
-            except ImportError:
-                print(f"No se pudo importar {module_name}. Verifica que el módulo existe y tiene la función 'sum_numbers'.")
-            except AttributeError:
-                print(f"El módulo {module_name} no tiene la función 'sum_numbers'.")
-            except Exception as e:
-                print(f"Error al ejecutar {module_name}: {e}")
-        elif choice == "q":
-            print("Saliendo...")
-            break
-        else:
-            print("Opción no válida, intenta de nuevo.")
-
-if __name__ == "__main__":
-    main()
-=======
 import os
 
 def main():
-    # Obtener la lista de archivos en el directorio actual
-    files = os.listdir()
+    # Obtener la lista de archivos .py en el directorio actual
+    files = [f for f in os.listdir() if f.endswith(".py")]
 
     while True:
         print("\n\n 😄==== Menú ====😄")
@@ -75,4 +36,4 @@ def main():
 
 if __name__ == "__main__":
     main()
->>>>>>> 3dbff654ab10be78f690fc1f14b3fc72e2d16cb9
+
